@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clothing Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, button {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            width: 300px;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            width: 320px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Clothing Type Predictor</h1>
+    <form id="predictForm">
+        <label for="age">Enter Age:</label>
+        <input type="number" id="age" name="age" required>
+
+        <label for="clothing_type">Enter Clothing Type:</label>
+        <input type="text" id="clothing_type" name="clothing_type" required>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    <div id="result">
+        <strong>Result:</strong>
+        <p id="output">No prediction yet.</p>
+    </div>
+
+    <script>
+        // Add event listener for form submission
+        document.getElementById('predictForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Get input values
+            const age = parseInt(document.getElementById('age').value);
+            const clothingType = document.getElementById('clothing_type').value;
+
+            // Validate inputs
+            if (!age || !clothingType.trim()) {
+                document.getElementById('output').textContent = 'Please enter valid age and clothing type.';
+                return;
+            }
+
+            // Perform "prediction" logic
+            const prediction = `Based on your input, a prediction for ${clothingType} at age ${age} is generated.`;
+
+            // Display result
+            document.getElementById('output').textContent = prediction;
+        });
+    </script>
+</body>
+</html>
